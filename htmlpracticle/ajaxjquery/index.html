@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jQuery AJAX Example</title>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+<body>
+
+  <button id="loadData">Load Data</button>
+  <div id="result"></div>
+
+  <script>
+    $(document).ready(function() {
+      $("#loadData").click(function() {
+        $.ajax({
+          url: "data.json",
+          method: "GET",
+          dataType: "json",
+          success: function(data) {
+            $("#result").html("Data: " + JSON.stringify(data));
+          },
+          error: function() {
+            $("#result").html("Error loading data");
+          }
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
